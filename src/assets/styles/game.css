@@ -2,24 +2,45 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
+    height: 100vh;
+    background-image: url('../images/background.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+
 }
+
 .animals-container{
     resize: both;
     overflow: auto;
     display: grid;
     gap: 15px;
     padding: 4px;
-    width: clamp(400px, 50vmin, 1000px);
+    width: clamp(300px, 75vmin, 1000px);
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
 }
 
 .card-img-container{
-    background-color: green;
+    background-color: rgba(118, 207, 177, 0.4);
     border-radius: 8px;
 }
+
+
+.card-img-container:hover{
+    cursor: pointer;
+    background-color: rgba(118, 207, 177, 0.9);
+    border-radius: 8px;
+}
+
 
 .animal-image {
     width: 150px; 
     height: 160px; 
     object-fit: contain; 
+}
+
+.img-title{
+    margin-bottom: 10px; 
+    color: white;
 }
