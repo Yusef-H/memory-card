@@ -7,7 +7,10 @@ function Game() {
     const [score, setScore] = useState(0);
     const [bestScore, setBestScore] = useState(0);
     const [animalsState, setAnimals] = useState(animals);
+
     useEffect(() => {
+        //shuffle animals
+        setAnimals(shuffleArray(animals));
         // Load the best score from local storage when the component mounts
         const storedBestScore = localStorage.getItem('bestScore');
         if (storedBestScore) {
@@ -16,7 +19,7 @@ function Game() {
             // If no best score is found in local storage, set it to 0
             setBestScore(0);
         }
-    });
+    }, []);
   
     const handleAnimalClick = (clickedAnimal) => {
 
@@ -52,6 +55,12 @@ function Game() {
         setAnimals(updatedAnimals);
         setScore(0);
     };
+
+    const resetBestScore = () => {
+        localStorage.clear();
+        setBestScore(0);
+        restartGame();
+    }
       
   
     return (
@@ -77,6 +86,8 @@ function Game() {
                 ))
             }
             </div>
+            <button className="score-btn"
+                onClick={resetBestScore}>Reset Best Score</button>
         </div>
     );
 }
