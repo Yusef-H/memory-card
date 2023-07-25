@@ -34,7 +34,6 @@ function Game() {
           audioElement.play();
         }
     
-        // Optionally, you can add a cleanup function to pause the music when the component unmounts
         return () => {
           audioElement.pause();
         };
