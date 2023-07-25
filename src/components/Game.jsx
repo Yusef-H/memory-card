@@ -17,6 +17,7 @@ function Game() {
     }, []);
   
     const handleAnimalClick = (clickedAnimal) => {
+        console.log(clickedAnimal);
         // If the clicked animal was previously clicked (isClicked is true), reset the score
         if (clickedAnimal.isClicked) {
             setScore(0);
@@ -29,9 +30,9 @@ function Game() {
         }
         setScore((prevScore) => prevScore + 1);
         // Find the clicked animal in the animals array and check if it was previously clicked
-        const updatedAnimals = animalsState.map((animal) =>{
+        const updatedAnimals = animalsState.map((animal) =>
             animal.id === clickedAnimal.id ? { ...animal, isClicked: true } : animal
-        });
+        );
 
         // Update the animals state with the updatedAnimals array
         setAnimals(updatedAnimals);
@@ -56,6 +57,6 @@ function Game() {
             </div>
         </div>
     );
-  }
+}
   
-  export default Game;
+export default Game;
