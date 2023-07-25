@@ -1,12 +1,15 @@
 import React from 'react'
 import {useState, useEffect} from 'react'
 import {animals, shuffleArray} from '../animals'
+import Card from './Card';
 import '../assets/styles/game.css'
+import jungleMusic from '../assets/sound/jungle.mp3';
 
 function Game() {
     const [score, setScore] = useState(0);
     const [bestScore, setBestScore] = useState(0);
     const [animalsState, setAnimals] = useState(animals);
+    const [isMusicPlaying, setIsMusicPlaying] = useState(false);
 
     useEffect(() => {
         //shuffle animals
@@ -20,6 +23,26 @@ function Game() {
             setBestScore(0);
         }
     }, []);
+
+    useEffect(() => {
+        // When the component mounts, play the jungle background music
+        const audioElement = new Audio(jungleMusic);
+        audioElement.loop = true; // Make the audio loop continuously
+    
+        // Check if music should start playing when the component mounts
+        if (isMusicPlaying) {
+          audioElement.play();
+        }
+    
+        // Optionally, you can add a cleanup function to pause the music when the component unmounts
+        return () => {
+          audioElement.pause();
+        };
+    }, [isMusicPlaying]);
+
+    const toggleMusic = () => {
+        setIsMusicPlaying((prevIsPlaying) => !prevIsPlaying);
+    };
   
     const handleAnimalClick = (clickedAnimal) => {
 
@@ -70,24 +93,20 @@ function Game() {
             <div className="animals-container">
             {
                 animalsState.map((animal) => (
-                    <div className="card-img-container" 
+                    <Card 
+                        animal = {animal}
+                        handleAnimalClick = {handleAnimalClick}
                         key={animal.id}
-                        onClick={() => handleAnimalClick(animal)}>
-                        <img
-                            className="animal-image"
-                            src={animal.img}
-                            alt={`Animal`}
-                        />
-                        <h3 className="img-title">
-                            {animal.name}
-                        </h3>
-                    </div>
-                    
+                    />
                 ))
             }
             </div>
             <button className="score-btn"
-                onClick={resetBestScore}>Reset Best Score</button>
+                onClick={resetBestScore}>Reset Best Score
+            </button >
+            <button onClick={toggleMusic} className="music-btn">
+                {isMusicPlaying ? 'Pause Music' : 'Play Music'}
+            </button>
         </div>
     );
 }

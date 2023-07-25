@@ -60,3 +60,15 @@ body{
     cursor: pointer;
     background-color: rgba(118, 207, 177, 0.9);
 }
+
+.music-btn{
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 999; /* Adjust the z-index value if needed to make sure the button appears above other elements */
+    background-color: #ffffff;
+    padding: 10px;
+    border-radius: 50%;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
