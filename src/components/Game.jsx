@@ -45,13 +45,18 @@ function Game() {
             <div className="animals-container">
             {
                 animalsState.map((animal) => (
-                    <img
-                        className="animal-image"
-                        key={animal.id}
-                        src={animal.img}
-                        alt={`Animal ${animal.name}`}
-                        onClick={() => handleAnimalClick(animal)}
-                    />
+                    <div className="card-img-container" key={animal.id}>
+                        <img
+                            className="animal-image"
+                            src={animal.img}
+                            alt={`Animal ${animal.name}`}
+                            onClick={() => handleAnimalClick(animal)}
+                        />
+                        <h3 className="img-title">
+                            {animal.name}
+                        </h3>
+                    </div>
+                    
                 ))
             }
             </div>

@@ -1,18 +1,25 @@
-
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 .animals-container{
     resize: both;
     overflow: auto;
     display: grid;
-    gap: 4px;
+    gap: 15px;
     padding: 4px;
-    border: 1px solid grey;
-    background-color: green;
+    width: clamp(400px, 50vmin, 1000px);
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
 }
+
+.card-img-container{
+    background-color: green;
+    border-radius: 8px;
+}
+
 .animal-image {
-    width: 150px; /* Adjust the width to your desired size */
-    height: 150px; /* Adjust the height to your desired size */
-    object-fit: contain; /* This ensures the image maintains its aspect ratio while fitting the container */
-    margin: 5px; /* Add some margin between images if needed */
-    border: 2px solid red;
+    width: 150px; 
+    height: 160px; 
+    object-fit: contain; 
 }
